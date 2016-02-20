@@ -1,0 +1,28 @@
+{
+  "name": "revolt.trumps.spacing",
+  "homepage": "https://github.com/revolt-framework/trumps.spacing",
+  "authors": [
+    {
+      "name": "Ruven Pelka",
+      "email": "ruven.pelka@gmail.com",
+      "homepage": "http://ruvenpelka.com"
+    }
+  ],
+  "description": "Revolt framework's spacing utilities.",
+  "main": "_trumps.spacing.scss",
+  "keywords": [
+    "revolt",
+    "oocss",
+    "css",
+    "spacing",
+    "spacers",
+    "margin",
+    "padding",
+    "negative-margin"
+  ],
+  "dependencies": {
+    "revolt.settings.defaults": "0.x.x",
+    "revolt.settings.spacing": "0.x.x"
+  },
+  "license": "MIT"
+}

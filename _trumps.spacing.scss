@@ -1,0 +1,75 @@
+//
+// REVOLT!
+// TRUMPS.SPACING
+//
+
+
+
+// Predefine the variables below to alter and enable specific features.
+
+$revo-spacing-namespace:        $revo-trumps-namespace !default;
+$revo-spacing-props:            (m: margin, nm: margin, p: padding) !default;
+$revo-spacing-map:              $revo-spacers !default;
+
+$revo-spacing-enable-module:    $revo-auto-enable !default;
+
+
+
+// Spacing classes
+//
+// Generates a whole shebang of spacing classes.
+
+@mixin spacing-classes($breakpoint: null, $props: $revo-spacing-props, $spacers: $revo-spacing-map) {
+
+    // If breakpoint is set, integrate it into class name.
+    $bp: null;
+    @if($breakpoint) {
+        $bp: #{$breakpoint}-;
+    }
+
+    .#{$revo-spacing-namespace}mx-#{$bp}auto {
+        margin-right: auto !important;
+        margin-left:  auto !important;
+    }
+
+    @each $abbrev, $prop in $props {
+        @each $size, $lengths in $spacers {
+
+            $length-x: map-get($lengths, x);
+            $length-y: map-get($lengths, y);
+
+            // If we're iterating through negative margins, make lengths
+            // negative.
+            @if $abbrev == nm {
+                $length-x: -#{$length-x};
+                $length-y: -#{$length-y};
+            }
+
+            .#{$revo-spacing-namespace}#{$abbrev}-#{$bp}#{$size}  { #{$prop}:        $length-y $length-x !important; }
+            .#{$revo-spacing-namespace}#{$abbrev}t-#{$bp}#{$size} { #{$prop}-top:    $length-y !important; }
+            .#{$revo-spacing-namespace}#{$abbrev}r-#{$bp}#{$size} { #{$prop}-right:  $length-x !important; }
+            .#{$revo-spacing-namespace}#{$abbrev}b-#{$bp}#{$size} { #{$prop}-bottom: $length-y !important; }
+            .#{$revo-spacing-namespace}#{$abbrev}l-#{$bp}#{$size} { #{$prop}-left:   $length-x !important; }
+
+            // Axes
+            .#{$revo-spacing-namespace}#{$abbrev}x-#{$bp}#{$size} {
+                #{$prop}-right:  $length-x !important;
+                #{$prop}-left:   $length-x !important;
+            }
+            .#{$revo-spacing-namespace}#{$abbrev}y-#{$bp}#{$size} {
+                #{$prop}-top:    $length-y !important;
+                #{$prop}-bottom: $length-y !important;
+            }
+
+        }
+    }
+
+}
+
+
+
+// Output spacing classes if module is enabled.
+
+@if $revo-spacing-enable-module {
+    @include spacing-classes();
+}
