@@ -11,7 +11,7 @@ $revo-spacing-namespace:        $revo-trumps-namespace !default;
 $revo-spacing-props:            (m: margin, nm: margin, p: padding) !default;
 $revo-spacing-map:              $revo-spacers !default;
 
-$revo-spacing-enable-module:    $revo-auto-enable !default;
+$revo-enable-spacing-module:    $revo-auto-enable !default;
 
 
 
@@ -70,6 +70,6 @@ $revo-spacing-enable-module:    $revo-auto-enable !default;
 
 // Output spacing classes if module is enabled.
 
-@if $revo-spacing-enable-module {
+@if $revo-enable-spacing-module {
     @include spacing-classes();
 }
